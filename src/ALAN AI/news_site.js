@@ -4,8 +4,8 @@ intent('What does this app do?', 'What can I do here?',
 const API_KEY = '16a8e5fc6f0b4d69bb82357f1ff92546';
 let savedArticles = [];
 
-<<<<<<< HEAD
-// News by Sourcintent("Give me the news from $(source* (.*))", (p) => {
+// News by Source
+intent("Give me the news from $(source* (.*))", (p) => {
   let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
 
   if (p.source.value) {
@@ -21,14 +21,6 @@ let savedArticles = [];
     if (!articles.length) {
       p.play("Sorry, please try searching for news from a different source");
       return;
-=======
-// News by Source
-intent('Give me the news from $(source* (.*))', (p) => {
-    let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
-    
-    if(p.source.value) {
-        NEWS_API_URL = `${NEWS_API_URL}&sources=${p.source.value.toLowerCase().split(" ").join('-')}`
->>>>>>> 57d4c84fbc3bc5773470199b930ab839f995ded6
     }
     
     api.request(NEWS_API_URL, (error, response, body) => {
