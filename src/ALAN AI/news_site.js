@@ -4,11 +4,10 @@ intent(
   reply("This is a news app.")
 );
 
-// intent('Start a command', (p) => {
-//     p.play({ command: 'testCommand'})
-// })
+
 
 const API_KEY = "16a8e5fc6f0b4d69bb82357f1ff92546";
+let savedArticles = [];
 
 // News by Source
 intent("Give me the news from $(source* (.*))", (p) =>{
@@ -20,5 +19,15 @@ intent("Give me the news from $(source* (.*))", (p) =>{
     
     api.request(NEWS_API_URL, (error, response, body) => {
         const {articles} = JSON.parse(body);
+        
+        if(!articles.length){
+            p.play('Sorry, please try searching for news from a different source.');
+            return;
+        }
+        
+        savedArticles = articles;
+        
+        p.play({ command: 'newHeadlines', articles});
+        p.play(`Here are the (latest|recent) ${p.source.value} news.`)
     })
 });
