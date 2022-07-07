@@ -7,8 +7,7 @@ intent(
 const API_KEY = "16a8e5fc6f0b4d69bb82357f1ff92546";
 let savedArticles = [];
 
-// News by Source
-intent("Give me the news from $(source* (.*))", (p) => {
+// News by Sourcintent("Give me the news from $(source* (.*))", (p) => {
   let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
 
   if (p.source.value) {
