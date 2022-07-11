@@ -3,9 +3,10 @@ import { Typography } from "@material-ui/core";
 import wordsToNumbers from "words-to-numbers";
 import alanBtn from "@alan-ai/alan-sdk-web";
 
-import logo from "./images/logo.png";
 import { NewsCards, Modal } from "./components";
 import useStyles from "./styles";
+
+const alanAPI = process.env.ALAN_AI_API_KEY;
 
 const App = () => {
   const [activeArticle, setActiveArticle] = useState(0);
@@ -16,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     alanBtn({
-      key: "c4aaf4683952ff7f3d7b63ae702e0e962e956eca572e1d8b807a3e2338fdd0dc/stage",
+      key: alanAPI,
       onCommand: ({ command, articles, number }) => {
         if (command === "newHeadlines") {
           setNewsArticles(articles);
@@ -66,11 +67,7 @@ const App = () => {
             </div>
           </div>
         ) : null}
-        <img
-          src="https://alan.app/voice/images/previews/preview.jpg"
-          className={classes.alanLogo}
-          alt="logo"
-        />
+        <img src="./images/logo.png" className={classes.alanLogo} alt="logo" />
       </div>
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
