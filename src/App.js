@@ -6,7 +6,7 @@ import alanBtn from "@alan-ai/alan-sdk-web";
 import { NewsCards, Modal } from "./components";
 import useStyles from "./styles";
 
-const alanAPI = process.env.ALAN_AI_API_KEY;
+const token = process.env.ALAN_AI_API_KEY;
 
 const App = () => {
   const [activeArticle, setActiveArticle] = useState(0);
@@ -17,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     alanBtn({
-      key: alanAPI,
+      key: token,
       onCommand: ({ command, articles, number }) => {
         if (command === "newHeadlines") {
           setNewsArticles(articles);

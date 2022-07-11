@@ -4,6 +4,7 @@
 // const API_KEY = '16a8e5fc6f0b4d69bb82357f1ff92546';
 // let savedArticles = [];
 
+<<<<<<< HEAD
 // // News by Source
 // intent("Give me the news from $(source* (.*))", (p) => {
 //   let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
@@ -22,6 +23,15 @@
 //       p.play("Sorry, please try searching for news from a different source");
 //       return;
 //     }
+=======
+// News by Source
+intent('Give me the news from $(source* (.*))', (p) => {
+    let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
+    
+    if(p.source.value) {
+        NEWS_API_URL = `${NEWS_API_URL}&sources=${p.source.value.toLowerCase().split(" ").join('-')}`
+    }
+>>>>>>> 1ec70c2344a3e70cc5e8cc0b43af5313f016dc76
     
 //     api.request(NEWS_API_URL, (error, response, body) => {
 //         const { articles } = JSON.parse(body);
@@ -67,9 +77,15 @@
 //     });
 // })
 
+<<<<<<< HEAD
 // // News by Categories
 // const CATEGORIES = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
 // const CATEGORIES_INTENT = `${CATEGORIES.map((category) => `${category}~${category}`).join('|')}|`;
+=======
+// News by Categories
+const CATEGORIES = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
+const CATEGORIES_INTENT = `${CATEGORIES.map((category) => `${category}~${category}`).join('|')}`;
+>>>>>>> 1ec70c2344a3e70cc5e8cc0b43af5313f016dc76
 
 // intent(`(show|what is|tell me|what's|what are|what're|read) (the|) (recent|latest|) $(N news|headlines) (in|about|on|) $(C~ ${CATEGORIES_INTENT})`,
 //   `(read|show|get|bring me|give me) (the|) (recent|latest) $(C~ ${CATEGORIES_INTENT}) $(N news|headlines)`, (p) => {
